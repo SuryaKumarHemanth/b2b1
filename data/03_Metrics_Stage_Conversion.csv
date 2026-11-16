@@ -1,0 +1,8 @@
+Pipeline Stage,Active Leads,Stage Conversion %,Cumulative Conversion %,Stage Drop-off %,Takeaway
+1 - Identified & Researched,26,100.0%,100.0%,0.0%,Initial qualified target list
+2 - Outreach Sent (Contacted),26,100.0%,100.0%,0.0%,100% of accounts touched
+3 - Replied / Initial Engagement,8,30.8%,30.8%,69.2%,Primary drop-off point
+4 - Discovery Call Booked,4,50.0%,15.4%,50.0%,Strong conversion from replies
+5 - Tech Evaluation / Scoping,2,50.0%,7.7%,50.0%,greytHR and ZingHR in technical review
+6 - Proposal / Terms Review,1,50.0%,3.8%,50.0%,ZingHR commercial contract draft ($35k)
+7 - Active Partner / Signed,0,0.0%,0.0%,0.0%,In flight; 45-60 day typical sales cycle

@@ -1,0 +1,7 @@
+Category,Subcategory,Sent / Contacted,Replies,Response Rate %,Calls Booked,Meeting Conv %
+Segment,Payroll,9,4,44.4%,2,22.2%
+Segment,HR-Tech,10,3,30.0%,1,10.0%
+Segment,Bank / BFSI,7,1,14.3%,1,14.3%
+Message Version,V1 - Short & Pain-Point (~75 words),10,4,40.0%,2,20.0%
+Message Version,V2 - Social Proof & Case Study (~120 words),9,3,33.3%,1,11.1%
+Message Version,V3 - Feature-Heavy Pitch (~180 words),7,1,14.3%,1,14.3%

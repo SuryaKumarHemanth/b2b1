@@ -1,0 +1,56 @@
+Touch ID,Lead ID,Company Name,Contact Name,Touch Number,Channel,Message Version,Date Sent,Outcome,Response Date,Days to Respond,Notes
+T001,L001,RazorpayX Payroll,Rahul Sharma,Touch 1: Initial Pitch,LinkedIn InMail,V1 - Short & Pain-Point,2026-10-06,Replied,2026-10-09,3,Replied expressing interest in reducing contractor tax friction.
+T002,L001,RazorpayX Payroll,Rahul Sharma,Touch 2: Scheduling,LinkedIn InMail,V1 - Short & Pain-Point,2026-10-11,Replied,2026-10-12,1,Shared calendar link for partner discovery discussion.
+T003,L001,RazorpayX Payroll,Rahul Sharma,Touch 3: Confirmation,Email - Direct,V1 - Short & Pain-Point,2026-10-21,Call Booked,2026-10-21,0,Confirmed 30-min discovery call for 10/28.
+T004,L002,Keka HR & Payroll,Ananya Sen,Touch 1: Initial Pitch,LinkedIn Connection + Note,V1 - Short & Pain-Point,2026-10-07,Replied,2026-10-11,4,Connected and replied: Interested in seeing integration architecture.
+T005,L002,Keka HR & Payroll,Ananya Sen,Touch 2: Follow-up Call,LinkedIn InMail,V1 - Short & Pain-Point,2026-10-14,Replied,2026-10-16,2,Proposed discovery sync with tech alliances team.
+T006,L002,Keka HR & Payroll,Ananya Sen,Touch 3: Agenda Lock,Email - Direct,V1 - Short & Pain-Point,2026-10-22,Call Booked,2026-10-22,0,Discovery call confirmed on calendar for 10/29.
+T007,L003,greytHR,Vikram Malhotra,Touch 1: Initial Pitch,Email - Direct,V2 - Social Proof & Case Study,2026-10-08,Replied,2026-10-13,5,Replied to case study. Asked for technical integration sandbox details.
+T008,L003,greytHR,Vikram Malhotra,Touch 2: Discovery Call,Email - Direct,V2 - Social Proof & Case Study,2026-10-15,Call Booked,2026-10-16,1,Completed initial call on 10/18; team advanced opportunity to tech evaluation.
+T009,L003,greytHR,Vikram Malhotra,Touch 3: Scoping Docs,Email - Direct,V2 - Social Proof & Case Study,2026-10-24,Replied,2026-10-25,1,greytHR architecture team reviewing API documentation.
+T010,L004,ZingHR,Neha Deshmukh,Touch 1: Initial Pitch,LinkedIn InMail,V2 - Social Proof & Case Study,2026-10-09,Replied,2026-10-12,3,Interested in white-labeled add-on for enterprise tier.
+T011,L004,ZingHR,Neha Deshmukh,Touch 2: Discovery Call,Email - Direct,V2 - Social Proof & Case Study,2026-10-14,Call Booked,2026-10-15,1,Held discovery session on 10/19. Very strong product fit.
+T012,L004,ZingHR,Neha Deshmukh,Touch 3: Proposal Submission,Email - Direct,V2 - Social Proof & Case Study,2026-10-26,Replied,2026-10-26,0,Submitted commercial proposal ($35k). Terms in executive review.
+T013,L005,Rippling (India APAC),David Chen,Touch 1: Initial Pitch,Email - Direct,V1 - Short & Pain-Point,2026-10-12,No Reply,-,-,Initial email delivered; no response after 7 days.
+T014,L005,Rippling (India APAC),David Chen,Touch 2: Follow-up 1,Email - Follow-up,V1 - Short & Pain-Point,2026-10-19,No Reply,-,-,Sent APAC benchmark data. Follow-up 3 is currently 3 days overdue.
+T015,L006,Deel (India Partnerships),Sarah Jenkins,Touch 1: Initial Pitch,LinkedIn InMail,V3 - Feature-Heavy Pitch,2026-10-14,Replied,2026-10-17,3,Replied with polite rejection: Product roadmap committed for H2. Revisit in 2027.
+T016,L006,Deel (India Partnerships),Sarah Jenkins,Touch 2: Acknowledgement,LinkedIn InMail,V3 - Feature-Heavy Pitch,2026-10-17,Not Interested,2026-10-17,0,Marked as closed / lost for current cycle.
+T017,L007,Pocket HRMS,Amit Patel,Touch 1: Initial Pitch,Email - Direct,V1 - Short & Pain-Point,2026-10-15,No Reply,-,-,Initial email sent.
+T018,L007,Pocket HRMS,Amit Patel,Touch 2: Follow-up 1,Email - Follow-up,V1 - Short & Pain-Point,2026-10-23,No Reply,-,-,Follow-up email sent with implementation timeline. Next check scheduled.
+T019,L008,TartanHQ,Prateek Roy,Touch 1: Initial Pitch,LinkedIn InMail,V2 - Social Proof & Case Study,2026-10-16,Replied,2026-10-21,5,Replied: Keen to explore API data aggregation collaboration.
+T020,L008,TartanHQ,Prateek Roy,Touch 2: Follow-up Demo,LinkedIn InMail,V2 - Social Proof & Case Study,2026-10-23,Replied,2026-10-25,2,Coordinating availability for executive demo.
+T021,L009,Payphi (PhiCommerce),Rajesh Pillai,Touch 1: Initial Pitch,Email - Direct,V3 - Feature-Heavy Pitch,2026-10-18,No Reply,-,-,Long feature-heavy email sent; no open/click response.
+T022,L009,Payphi (PhiCommerce),Rajesh Pillai,Touch 2: Follow-up 1,Email - Follow-up,V3 - Feature-Heavy Pitch,2026-10-22,No Reply,-,-,Follow-up email sent. 2 days overdue for Touch 3.
+T023,L010,Darwinbox,Rohit Varma,Touch 1: Initial Pitch,LinkedIn InMail,V1 - Short & Pain-Point,2026-10-06,No Reply,-,-,Sent short pain-point message to VP Ecosystem.
+T024,L010,Darwinbox,Rohit Varma,Touch 2: Follow-up 1,LinkedIn InMail,V1 - Short & Pain-Point,2026-10-18,No Reply,-,-,Second ping sent. Touch 3 follow-up is currently 3 days overdue.
+T025,L011,Zoho People,Sridhar Narayanan,Touch 1: Initial Pitch,Email - Direct,V2 - Social Proof & Case Study,2026-10-07,No Reply,-,-,Email sent with HR-tech integration case study.
+T026,L011,Zoho People,Sridhar Narayanan,Touch 2: Follow-up 1,Email - Follow-up,V2 - Social Proof & Case Study,2026-10-16,Replied,2026-10-20,4,Replied: Forwarded to Developer Marketplace team for review.
+T027,L011,Zoho People,Sridhar Narayanan,Touch 3: Screening Call,Email - Direct,V2 - Social Proof & Case Study,2026-10-23,Call Booked,2026-10-24,1,Partner screening call locked in for 10/31.
+T028,L012,Sprinto Compliance,Girish Reddi,Touch 1: Initial Pitch,LinkedIn InMail,V1 - Short & Pain-Point,2026-10-09,Replied,2026-10-15,6,Replied: Highly interested in payroll security compliance hooks.
+T029,L012,Sprinto Compliance,Girish Reddi,Touch 2: Architecture Share,LinkedIn InMail,V1 - Short & Pain-Point,2026-10-20,Replied,2026-10-22,2,Shared 2-page integration architecture overview.
+T030,L013,PeopleStrong,Meenakshi Iyer,Touch 1: Initial Pitch,Email - Direct,V3 - Feature-Heavy Pitch,2026-10-10,No Reply,-,-,Sent V3 pitch. No response.
+T031,L013,PeopleStrong,Meenakshi Iyer,Touch 2: Follow-up 1,Email - Follow-up,V3 - Feature-Heavy Pitch,2026-10-19,No Reply,-,-,Sent comparison matrix; still no reply.
+T032,L014,Advantage Club,Sourabh Deorah,Touch 1: Initial Pitch,LinkedIn Connection + Note,V2 - Social Proof & Case Study,2026-10-11,Replied,2026-10-17,6,Connected and replied: Interested in corporate perks cross-distribution.
+T033,L014,Advantage Club,Sourabh Deorah,Touch 2: Commercial Sync,LinkedIn InMail,V2 - Social Proof & Case Study,2026-10-22,Replied,2026-10-24,2,Sent commercial outline; evaluating next steps.
+T034,L015,Zaggle,Avinash Godbole,Touch 1: Initial Pitch,Email - Direct,V1 - Short & Pain-Point,2026-10-13,No Reply,-,-,Direct email sent to VP Corp Dev.
+T035,L015,Zaggle,Avinash Godbole,Touch 2: Follow-up 1,Email - Follow-up,V1 - Short & Pain-Point,2026-10-20,No Reply,-,-,Follow-up sent; no response recorded.
+T036,L016,HONO HR,Mukund Swaminathan,Touch 1: Initial Pitch,LinkedIn InMail,V3 - Feature-Heavy Pitch,2026-10-15,Replied,2026-10-18,3,Replied stating that internal product bandwidth is saturated.
+T037,L016,HONO HR,Mukund Swaminathan,Touch 2: Wrap-up,LinkedIn InMail,V3 - Feature-Heavy Pitch,2026-10-18,Not Interested,2026-10-18,0,Logged as not interested / bad timing.
+T038,L017,Zimyo,Ajay Kumar,Touch 1: Initial Pitch,Email - Direct,V2 - Social Proof & Case Study,2026-10-16,No Reply,-,-,Email sent with SMB payroll integration numbers.
+T039,L017,Zimyo,Ajay Kumar,Touch 2: Follow-up 1,Email - Follow-up,V2 - Social Proof & Case Study,2026-10-23,No Reply,-,-,Follow-up email sent. Pending reply.
+T040,L018,Akrivia HCM,Dinesh Rao,Touch 1: Initial Pitch,LinkedIn InMail,V1 - Short & Pain-Point,2026-10-17,No Reply,-,-,InMail sent; no reply after 5 days.
+T041,L018,Akrivia HCM,Dinesh Rao,Touch 2: Follow-up 1,LinkedIn InMail,V1 - Short & Pain-Point,2026-10-22,No Reply,-,-,Gentle nudge sent on LinkedIn.
+T042,L019,Workato (APAC HR),Kenji Takahashi,Touch 1: Initial Pitch,Email - Direct,V3 - Feature-Heavy Pitch,2026-10-19,No Reply,-,-,Complex feature-heavy connector pitch sent; no reply.
+T043,L019,Workato (APAC HR),Kenji Takahashi,Touch 2: Follow-up 1,Email - Follow-up,V3 - Feature-Heavy Pitch,2026-10-24,No Reply,-,-,Follow-up email delivered. Pending reply.
+T044,L020,HDFC Bank (SmartHub),Siddharth Mehta,Touch 1: Initial Pitch,LinkedIn InMail,V1 - Short & Pain-Point,2026-10-06,No Reply,-,-,Initial pitch sent via LinkedIn InMail.
+T045,L020,HDFC Bank (SmartHub),Siddharth Mehta,Touch 2: Follow-up 1,LinkedIn InMail,V1 - Short & Pain-Point,2026-10-17,No Reply,-,-,Follow-up sent. Touch 3 is critically overdue (4 days).
+T046,L021,ICICI Bank (API Banking),Priya Sundaram,Touch 1: Initial Pitch,Email - Direct,V2 - Social Proof & Case Study,2026-10-08,No Reply,-,-,Email sent to API Banking partnerships inbox.
+T047,L021,ICICI Bank (API Banking),Priya Sundaram,Touch 2: Technical Follow-up,Email - Follow-up,V2 - Social Proof & Case Study,2026-10-16,Replied,2026-10-21,5,Replied: Forwarded to Open Banking team for evaluation.
+T048,L021,ICICI Bank (API Banking),Priya Sundaram,Touch 3: Intro Call,Email - Direct,V2 - Social Proof & Case Study,2026-10-23,Call Booked,2026-10-24,1,Introductory partner call scheduled for 10/30.
+T049,L022,Axis Bank (Neo Banking),Sameer Joshi,Touch 1: Initial Pitch,LinkedIn InMail,V3 - Feature-Heavy Pitch,2026-10-10,No Reply,-,-,V3 feature pitch sent to VP Fintech Partnerships.
+T050,L022,Axis Bank (Neo Banking),Sameer Joshi,Touch 2: Follow-up 1,LinkedIn InMail,V3 - Feature-Heavy Pitch,2026-10-18,No Reply,-,-,Follow-up sent; no response received.
+T051,L023,Yes Bank (Open Banking),Tarun Kapoor,Touch 1: Initial Pitch,Email - Direct,V1 - Short & Pain-Point,2026-10-12,No Reply,-,-,Sent V1 pitch via corporate email.
+T052,L023,Yes Bank (Open Banking),Tarun Kapoor,Touch 2: Follow-up 1,Email - Follow-up,V1 - Short & Pain-Point,2026-10-20,No Reply,-,-,Follow-up sent; no response.
+T053,L024,IDFC FIRST Bank,Pooja Nair,Touch 1: Initial Pitch,LinkedIn InMail,V2 - Social Proof & Case Study,2026-10-14,Replied,2026-10-19,5,Replied: API gateway onboarding currently paused for aggregators.
+T054,L025,M2P Fintech (Banking APIs),Karthik Sridhar,Touch 1: Initial Pitch,LinkedIn InMail,V1 - Short & Pain-Point,2026-10-16,No Reply,-,-,V1 message delivered. Follow-up planned.
+T055,L026,Karbon Card (BFSI Corporate),Sunil Sinha,Touch 1: Initial Pitch,Email - Direct,V3 - Feature-Heavy Pitch,2026-10-18,Replied,2026-10-21,3,Replied: Company is focusing 100% on direct sales; no partner channel.

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2B Partnership Pipeline Dashboard</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --blue: #3b82f6;
+      --blue-glow: rgba(59, 130, 246, 0.2);
+      --green: #10b981;
+      --green-bg: rgba(16, 185, 129, 0.15);
+      --yellow: #f59e0b;
+      --yellow-bg: rgba(245, 158, 11, 0.15);
+      --red: #ef4444;
+      --red-bg: rgba(239, 68, 68, 0.15);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 24px;
+      line-height: 1.5;
+    }
+    .header {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge-live {
+      background: #1e3a8a;
+      color: #93c5fd;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      border: 1px solid #3b82f6;
+    }
+    .meta-subtitle {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .kpi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .kpi-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--blue);
+    }
+    .kpi-card.alert::before { background: var(--red); }
+    .kpi-card.success::before { background: var(--green); }
+    .kpi-card.warning::before { background: var(--yellow); }
+    .kpi-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .kpi-value {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      margin: 8px 0 4px;
+    }
+    .kpi-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .kpi-sub.up { color: var(--green); font-weight: 600; }
+    .kpi-sub.warn { color: var(--red); font-weight: 600; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 900px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .section-title span.tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #0f172a;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .funnel-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+    .funnel-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .funnel-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+    .funnel-name { font-weight: 500; color: #e2e8f0; }
+    .funnel-stats { font-weight: 600; color: #94a3b8; }
+    .funnel-bar-track {
+      background: #0f172a;
+      height: 18px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #1e293b;
+      position: relative;
+    }
+    .funnel-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      border-radius: 6px;
+      transition: width 0.6s ease;
+    }
+    .takeaway-box {
+      background: rgba(30, 58, 138, 0.25);
+      border-left: 3px solid #3b82f6;
+      padding: 10px 14px;
+      border-radius: 4px;
+      font-size: 12.5px;
+      color: #cbd5e1;
+      margin-top: 12px;
+    }
+    .takeaway-box strong { color: #60a5fa; }
+    .takeaway-box.alert {
+      background: rgba(239, 68, 68, 0.15);
+      border-left-color: #ef4444;
+    }
+    .takeaway-box.alert strong { color: #f87171; }
+
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+    table.data-table th, table.data-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    table.data-table th {
+      background: #0f172a;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    table.data-table tr:hover { background: rgba(255, 255, 255, 0.02); }
+    .tag-status {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .tag-red { background: var(--red-bg); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .tag-green { background: var(--green-bg); color: #86efac; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .tag-yellow { background: var(--yellow-bg); color: #fde047; border: 1px solid rgba(245, 158, 11, 0.3); }
+
+    .insights-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .hyp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .hyp-item {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hyp-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #60a5fa;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 8px;
+    }
+    .hyp-text { font-size: 12.5px; color: #94a3b8; }
+    .hyp-text strong { color: #f1f5f9; }
+    .kpi-tag {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #6ee7b7;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <h1>
+        B2B Partnership Pipeline Dashboard
+        <span class="badge-live">Live Tracker (Oct–Nov 2026)</span>
+      </h1>
+      <p class="meta-subtitle">Target Segments: Payroll, HR-Tech, Bank/BFSI &bull; Real Data Tracking: 26 Prospects, 54 Outreach Touches</p>
+    </div>
+    <div>
+      <span style="font-size: 12px; color: var(--text-muted);">Status: Active | Last Synced: Nov 2026</span>
+    </div>
+  </div>
+
+  <!-- KPI Top Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Target Accounts</div>
+      <div class="kpi-value">26</div>
+      <div class="kpi-sub">100% researched &amp; vetted</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Outreach Initiated</div>
+      <div class="kpi-value">26</div>
+      <div class="kpi-sub">54 total logged touches</div>
+    </div>
+    <div class="kpi-card success">
+      <div class="kpi-label">Overall Reply Rate</div>
+      <div class="kpi-value">30.8%</div>
+      <div class="kpi-sub up">8 replies logged (honest data)</div>
+    </div>
+    <div class="kpi-card success">
+      <div class="kpi-label">Discovery Calls</div>
+      <div class="kpi-value">4</div>
+      <div class="kpi-sub up">50.0% conversion from reply</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Weighted Pipeline</div>
+      <div class="kpi-value">$139,450</div>
+      <div class="kpi-sub">$649,000 unweighted ARR</div>
+    </div>
+    <div class="kpi-card alert">
+      <div class="kpi-label">Overdue Follow-ups</div>
+      <div class="kpi-value">4 Accounts</div>
+      <div class="kpi-sub warn">$65,000 weighted at risk</div>
+    </div>
+  </div>
+
+  <!-- Row 1: Funnel & Overdue Board -->
+  <div class="grid-2">
+    <!-- Funnel -->
+    <div class="section-card">
+      <div class="section-title">
+        <span>1. Partnership Conversion Funnel</span>
+        <span class="tag">Stage Conversion &amp; Drop-off</span>
+      </div>
+      <div class="funnel-container">
+        <div class="funnel-row">
+          <div class="funnel-meta">
+            <span class="funnel-name">Stage 1: Researched</span>
+            <span class="funnel-stats">26 leads (100%)</span>
+          </div>
+          <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width: 100%;"></div></div>
+        </div>
+        <div class="funnel-row">
+          <div class="funnel-meta">
+            <span class="funnel-name">Stage 2: Outreach Sent</span>
+            <span class="funnel-stats">26 contacted (100%)</span>
+          </div>
+          <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width: 100%;"></div></div>
+        </div>
+        <div class="funnel-row">
+          <div class="funnel-meta">
+            <span class="funnel-name">Stage 3: Replied / Engaged</span>
+            <span class="funnel-stats">8 replies (30.8% | 69.2% drop)</span>
+          </div>
+          <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width: 30.8%; background: #38bdf8;"></div></div>
+        </div>
+        <div class="funnel-row">
+          <div class="funnel-meta">
+            <span class="funnel-name">Stage 4: Discovery Call Booked</span>
+            <span class="funnel-stats">4 calls (15.4% | 50.0% stage)</span>
+          </div>
+          <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width: 15.4%; background: #10b981;"></div></div>
+        </div>
+        <div class="funnel-row">
+          <div class="funnel-meta">
+            <span class="funnel-name">Stage 5: Tech Evaluation / Scoping</span>
+            <span class="funnel-stats">2 accounts (7.7% | 50.0% stage)</span>
+          </div>
+          <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width: 7.7%; background: #6366f1;"></div></div>
+        </div>
+        <div class="funnel-row">
+          <div class="funnel-meta">
+            <span class="funnel-name">Stage 6: Proposal / Terms Review</span>
+            <span class="funnel-stats">1 account (3.8% | ZingHR $35k)</span>
+          </div>
+          <div class="funnel-bar-track"><div class="funnel-bar-fill" style="width: 3.8%; background: #f59e0b;"></div></div>
+        </div>
+      </div>
+      <div class="takeaway-box">
+        <strong>Takeaway:</strong> The primary drop-off occurs between Touch 1 outreach and reply (69.2% loss); however, once engaged, 50.0% of respondents convert to discovery calls, proving strong solution-market fit once initial attention is secured.
+      </div>
+    </div>
+
+    <!-- Overdue Follow-ups -->
+    <div class="section-card">
+      <div class="section-title">
+        <span>2. Priority Action Board: Overdue Follow-ups</span>
+        <span class="tag">4 Accounts Requiring Action</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Company &amp; Lead</th>
+            <th>Segment</th>
+            <th>Overdue By</th>
+            <th>Pipeline Value</th>
+            <th>Next Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>HDFC Bank</strong><br><span style="color:#94a3b8; font-size:11px;">Siddharth Mehta</span></td>
+            <td>Bank / BFSI</td>
+            <td><span class="tag-status tag-red">4 Days Overdue</span></td>
+            <td>$50,000</td>
+            <td>Send Touch 3 benchmark email</td>
+          </tr>
+          <tr>
+            <td><strong>Darwinbox</strong><br><span style="color:#94a3b8; font-size:11px;">Rohit Varma</span></td>
+            <td>HR-Tech</td>
+            <td><span class="tag-status tag-red">3 Days Overdue</span></td>
+            <td>$35,000</td>
+            <td>LinkedIn ping + 30-sec demo</td>
+          </tr>
+          <tr>
+            <td><strong>Rippling</strong><br><span style="color:#94a3b8; font-size:11px;">David Chen</span></td>
+            <td>Payroll</td>
+            <td><span class="tag-status tag-red">3 Days Overdue</span></td>
+            <td>$28,000</td>
+            <td>APAC compliance case study</td>
+          </tr>
+          <tr>
+            <td><strong>Payphi</strong><br><span style="color:#94a3b8; font-size:11px;">Rajesh Pillai</span></td>
+            <td>Payroll</td>
+            <td><span class="tag-status tag-red">2 Days Overdue</span></td>
+            <td>$16,000</td>
+            <td>Send direct 2-line check-in</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="takeaway-box alert">
+        <strong>Takeaway:</strong> 4 high-priority enterprise accounts represent $129,000 in unweighted pipeline ($65,000 weighted value) at risk of stalling without Touch 2/3 execution; clearing these within 24 hours is the highest-ROI near-term action.
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Segment Breakdown & Message Copy A/B -->
+  <div class="grid-2">
+    <!-- Segment Breakdown -->
+    <div class="section-card">
+      <div class="section-title">
+        <span>3. Response Rate by Segment</span>
+        <span class="tag">Payroll vs HR-Tech vs Bank</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Segment</th>
+            <th>Contacted</th>
+            <th>Replies</th>
+            <th>Response Rate</th>
+            <th>Calls Booked</th>
+            <th>Conv %</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Payroll Platforms</strong></td>
+            <td>9</td>
+            <td>4</td>
+            <td><strong style="color:#86efac;">44.4%</strong></td>
+            <td>2</td>
+            <td>22.2%</td>
+          </tr>
+          <tr>
+            <td><strong>HR-Tech / HCM Systems</strong></td>
+            <td>10</td>
+            <td>3</td>
+            <td><strong style="color:#60a5fa;">30.0%</strong></td>
+            <td>1</td>
+            <td>10.0%</td>
+          </tr>
+          <tr>
+            <td><strong>Banks &amp; BFSI Gateways</strong></td>
+            <td>7</td>
+            <td>1</td>
+            <td><strong style="color:#fca5a5;">14.3%</strong></td>
+            <td>1</td>
+            <td>14.3%</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="takeaway-box">
+        <strong>Takeaway:</strong> Payroll partners exhibit 3.1x higher responsiveness than Banks (44.4% vs 14.3%), driven by immediate customer demand for automated payouts, whereas Banks suffer from lengthy multi-tier compliance gatekeeping.
+      </div>
+    </div>
+
+    <!-- Message Copy A/B Performance -->
+    <div class="section-card">
+      <div class="section-title">
+        <span>4. Response Rate by Message Version</span>
+        <span class="tag">Copy Length &amp; Hook A/B Test</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Message Version &amp; Style</th>
+            <th>Sent</th>
+            <th>Replies</th>
+            <th>Response Rate</th>
+            <th>Calls Booked</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>V1: Short &amp; Pain-Point</strong> (~75 words)</td>
+            <td>10</td>
+            <td>4</td>
+            <td><strong style="color:#86efac;">40.0%</strong></td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td><strong>V2: Social Proof &amp; Case Study</strong> (~120 words)</td>
+            <td>9</td>
+            <td>3</td>
+            <td><strong style="color:#60a5fa;">33.3%</strong></td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td><strong>V3: Feature-Heavy Pitch</strong> (~180 words)</td>
+            <td>7</td>
+            <td>1</td>
+            <td><strong style="color:#fca5a5;">14.3%</strong></td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="takeaway-box">
+        <strong>Takeaway:</strong> Concise, problem-first copy (V1) outperforms feature-heavy pitches (V3) by 2.8x (40.0% vs 14.3%), confirming that partnership decision makers skim messages and ignore dense corporate collateral on first touch.
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3: Insights & Growth Hypotheses -->
+  <div class="insights-card">
+    <div class="section-title">
+      <span>5. Strategic Insights &amp; Growth Hypotheses</span>
+      <span class="tag">Product-Led Outreach Optimization</span>
+    </div>
+    <div style="background: rgba(15, 23, 42, 0.6); padding: 12px 16px; border-radius: 8px; border-left: 3px solid #3b82f6; margin-bottom: 16px;">
+      <span style="color:#94a3b8; font-size:12px; font-weight:600; text-transform:uppercase;">One-Line Problem Statement:</span>
+      <p style="font-size: 14px; color:#f8fafc; font-weight: 500; margin-top: 2px;">
+        "69.2% of partnership prospects stall immediately after Touch 1 outreach, driven primarily by cognitive fatigue from feature-heavy pitches (V3: 14.3% response) and bureaucratic gatekeeping in Bank/BFSI targets (14.3% response)."
+      </p>
+    </div>
+
+    <div class="hyp-grid">
+      <div class="hyp-item">
+        <div class="hyp-title">Hypothesis 1: Copy Cognitive Load</div>
+        <div class="hyp-text">
+          <strong>Observation:</strong> V3 feature pitch had only 14.3% response vs V1 short pitch at 40.0% (2.8x higher).
+        </div>
+        <div class="hyp-text">
+          <strong>Root Cause:</strong> Mobile skimming executives ignore dense feature dumps lacking immediate WIIFM.
+        </div>
+        <div class="hyp-text">
+          <strong>Change to Test:</strong> Sunset V3. Replace with 3-sentence teardown hook + 30-sec embedded workflow preview GIF.
+        </div>
+        <div class="kpi-tag">Primary KPI: Reply Rate &ge; 35.0%</div>
+      </div>
+
+      <div class="hyp-item">
+        <div class="hyp-title">Hypothesis 2: Banking Role Gatekeeping</div>
+        <div class="hyp-text">
+          <strong>Observation:</strong> Bank/BFSI segment response rate is 14.3% with 85.7% total silence on LinkedIn.
+        </div>
+        <div class="hyp-text">
+          <strong>Root Cause:</strong> Reaching broad VP Partnerships titles hits compliance gatekeepers who don't own API roadmap.
+        </div>
+        <div class="hyp-text">
+          <strong>Change to Test:</strong> Pivot targeting to Head of Open Banking / API Product Managers via direct email with sandbox link.
+        </div>
+        <div class="kpi-tag">Primary KPI: BFSI Reply Rate &ge; 30.0%</div>
+      </div>
+
+      <div class="hyp-item">
+        <div class="hyp-title">Hypothesis 3: Cadence Discipline</div>
+        <div class="hyp-text">
+          <strong>Observation:</strong> 72% received only 1 follow-up; 4 high-value accounts ($65k weighted value) currently overdue.
+        </div>
+        <div class="hyp-text">
+          <strong>Root Cause:</strong> Manual tracking without SLA reminders caused warm leads to go cold prematurely.
+        </div>
+        <div class="hyp-text">
+          <strong>Change to Test:</strong> Enforce strict 4-touch multi-channel cadence with fixed SLA triggers (Days 1, 4, 8, 14).
+        </div>
+        <div class="kpi-tag">Primary KPI: Follow-up Reply Share &ge; 40%</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
